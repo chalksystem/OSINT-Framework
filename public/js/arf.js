@@ -17,7 +17,7 @@ var vis = d3.select("#body").append("svg:svg")
   .append("svg:g")
     .attr("transform", "translate(" + margin[3] + "," + margin[0] + ")");
 
-d3.json("arf.json", function(json) {
+d3.json("../arf.json", function(json) {
   root = json;
   root.x0 = height / 2;
   root.y0 = 0;
@@ -30,18 +30,18 @@ d3.json("arf.json", function(json) {
     }
   }
 
-/*  function toggleAll(d) {
+  function toggleAll(d) {
     if (d.children) {
       d.children.forEach(toggleAll);
       toggle(d);
     }
-  } */
+  } 
   root.children.forEach(collapse);
   update(root);
 });
 
 function update(source) {
-  // var duration = d3.event && d3.event.altKey ? 5000 : 500;
+   var duration = d3.event && d3.event.altKey ? 5000 : 500;
 
   // Compute the new tree layout.
   var nodes = tree.nodes(root).reverse();
